@@ -1,0 +1,284 @@
+/* ===== GLOBAL RGB ENVIRONMENT ===== */
+body,html{
+	height: 100%;
+	margin: 0;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+	background: #0f172a;
+	position: relative;
+	overflow: hidden;
+}
+
+/* moving RGB aura */
+body::before{
+	content: "";
+	position: fixed;
+	width: 200%;
+	height: 200%;
+	top: -50%;
+	left: -50%;
+	background: conic-gradient(
+		from 0deg,
+		#00f0ff,
+		#00ff9d,
+		#7c4dff,
+		#ff2fd1,
+		#00f0ff
+	);
+	animation: rgbRotate 18s linear infinite;
+	filter: blur(120px);
+	opacity: 0.25;
+	z-index: -1;
+}
+
+@keyframes rgbRotate{
+	from{ transform: rotate(0deg); }
+	to{ transform: rotate(360deg); }
+}
+
+.chat{
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+/* ===== RGB GLASS CARD ===== */
+.card{
+	height: 540px;
+	border-radius: 24px !important;
+	background: rgba(15,23,42,0.75) !important;
+	backdrop-filter: blur(18px);
+	border: 1px solid rgba(255,255,255,0.08);
+	position: relative;
+	overflow: hidden;
+	box-shadow:
+	0 0 30px rgba(0,240,255,0.12),
+	0 0 60px rgba(124,77,255,0.08);
+	transition: 0.35s ease;
+}
+
+/* animated RGB border */
+.card::before{
+	content: "";
+	position: absolute;
+	inset: -2px;
+	border-radius: 26px;
+	background: linear-gradient(
+		90deg,
+		#00f0ff,
+		#00ff9d,
+		#7c4dff,
+		#ff2fd1,
+		#00f0ff
+	);
+	background-size: 300% 300%;
+	animation: rgbBorder 6s linear infinite;
+	z-index: -1;
+}
+
+.card:hover{
+	transform: translateY(-6px);
+	box-shadow:
+	0 0 50px rgba(0,240,255,0.25),
+	0 0 90px rgba(124,77,255,0.18);
+}
+
+@keyframes rgbBorder{
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+
+/* ===== HEADER ===== */
+.msg_head{
+	background: rgba(15,23,42,0.9);
+	color: white;
+	border-bottom: 1px solid rgba(255,255,255,0.08);
+	position: relative;
+}
+
+/* holographic line */
+.msg_head::after{
+	content:"";
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:2px;
+	background: linear-gradient(90deg,#00f0ff,#00ff9d,#7c4dff,#ff2fd1);
+	background-size: 200% 100%;
+	animation: rgbBorder 4s linear infinite;
+}
+
+/* ===== BODY ===== */
+.msg_card_body{
+	overflow-y: auto;
+	padding: 25px;
+	scroll-behavior: smooth;
+}
+
+/* RGB scrollbar */
+.msg_card_body::-webkit-scrollbar{
+	width: 6px;
+}
+.msg_card_body::-webkit-scrollbar-thumb{
+	background: linear-gradient(#00f0ff,#7c4dff);
+	border-radius: 10px;
+}
+
+/* ===== FOOTER ===== */
+.card-footer{
+	border-radius: 0 0 24px 24px !important;
+	background: rgba(15,23,42,0.9);
+	border-top: 1px solid rgba(255,255,255,0.08);
+	padding: 15px;
+}
+
+/* ===== INPUT ===== */
+.type_msg{
+	background: rgba(15,23,42,0.85) !important;
+	border-radius: 30px !important;
+	border: 1px solid rgba(255,255,255,0.1) !important;
+	color: white !important;
+	height: 52px !important;
+	padding-left: 20px;
+	transition: 0.3s;
+}
+
+.type_msg:focus{
+	box-shadow:
+	0 0 8px #00f0ff,
+	0 0 18px #7c4dff;
+	border-color: transparent !important;
+}
+
+/* ===== SEND BUTTON ===== */
+.send_btn{
+	border-radius: 50% !important;
+	background: linear-gradient(135deg,#00f0ff,#7c4dff,#ff2fd1) !important;
+	color: white !important;
+	width: 52px;
+	height: 52px;
+	border: none !important;
+	animation: pulseRGB 2s infinite;
+}
+
+.send_btn:hover{
+	transform: scale(1.1);
+}
+
+@keyframes pulseRGB{
+	0%{box-shadow:0 0 10px #00f0ff}
+	50%{box-shadow:0 0 30px #7c4dff}
+	100%{box-shadow:0 0 10px #ff2fd1}
+}
+
+/* ===== USER INFO ===== */
+.user_info span{
+	font-size: 18px;
+	font-weight: 600;
+	color: #e2e8f0;
+}
+
+.user_info p{
+	font-size: 12px;
+	color: rgba(255,255,255,0.6);
+	margin-bottom: 0;
+}
+
+/* ===== AVATAR ===== */
+.user_img{
+	height: 55px;
+	width: 55px;
+	border: 2px solid rgba(255,255,255,0.2);
+	box-shadow: 0 0 12px rgba(0,240,255,0.4);
+}
+
+.user_img_msg{
+	height: 40px;
+	width: 40px;
+	border: 2px solid rgba(255,255,255,0.2);
+	box-shadow: 0 0 10px rgba(124,77,255,0.4);
+}
+
+/* ===== BOT MESSAGE ===== */
+.msg_cotainer{
+	background: rgba(30,41,59,0.85);
+	color: #e2e8f0;
+	border-radius: 18px;
+	padding: 12px 16px;
+	border: 1px solid rgba(255,255,255,0.08);
+	box-shadow:
+	0 0 12px rgba(0,240,255,0.25),
+	0 0 25px rgba(124,77,255,0.15);
+	transition: 0.3s;
+}
+
+.msg_cotainer:hover{
+	box-shadow:
+	0 0 20px rgba(0,240,255,0.45),
+	0 0 40px rgba(124,77,255,0.25);
+}
+
+/* ===== USER MESSAGE ===== */
+.msg_cotainer_send{
+	background: linear-gradient(135deg,#00f0ff,#7c4dff,#ff2fd1);
+	color: white;
+	border-radius: 18px;
+	padding: 12px 16px;
+	box-shadow:
+	0 0 18px rgba(124,77,255,0.5);
+}
+
+/* ===== TIME ===== */
+.msg_time, .msg_time_send{
+	font-size: 10px;
+	opacity: 0.6;
+	margin-top: 5px;
+	display: block;
+	color: rgba(255,255,255,0.6);
+}
+
+/* ===== ONLINE STATUS ===== */
+.online_icon{
+	position: absolute;
+	height: 14px;
+	width:14px;
+	background: linear-gradient(135deg,#00ff9d,#00f0ff);
+	border-radius: 50%;
+	bottom: 0;
+	right: 0;
+	border:2px solid #0f172a;
+	box-shadow: 0 0 10px #00ff9d;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width: 576px){
+	.card{
+		height: 96vh;
+	}
+}
+/* ===== RESET BUTTON RGB STYLE ===== */
+.reset_btn{
+	background: linear-gradient(135deg,#ff2fd1,#7c4dff,#00f0ff) !important;
+	background-size: 200% 200%;
+	border: none !important;
+	color: white !important;
+	border-radius: 20px;
+	padding: 6px 16px;
+	margin-left: auto;
+	transition: 0.3s;
+	animation: rgbShift 4s linear infinite;
+}
+
+.reset_btn:hover{
+	transform: scale(1.08);
+	box-shadow:
+	0 0 10px #ff2fd1,
+	0 0 20px #7c4dff,
+	0 0 30px #00f0ff;
+}
+
+@keyframes rgbShift{
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
