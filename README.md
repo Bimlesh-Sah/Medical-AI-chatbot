@@ -7,7 +7,7 @@
 Clone the repository
 
 ```bash
-git clonehttps://github.com/entbappy/Build-a-Complete-Medical-Chatbot-with-LLMs-LangChain-Pinecone-Flask-AWS.git
+git clone "https://******************"
 ```
 ### STEP 01- Create a conda environment after opening the repository
 
@@ -93,7 +93,7 @@ open up localhost:
 
 	
 ## 3. Create ECR repo to store/save docker image
-    - Save the URI: 301782007863.dkr.ecr.eu-north-1.amazonaws.com/medical-ai-chatbot
+    - Save the URI:********************************
 	
 ## 4. Create EC2 machine (Ubuntu) 
 
